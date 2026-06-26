@@ -127,6 +127,9 @@
             force_basic_auth: true
             mode: '0755'
           register: get_archive
+          until: get_archive is not failed
+          retries: 6
+          delay: 5
 
         - name: Unpack archive
           project_archive:
